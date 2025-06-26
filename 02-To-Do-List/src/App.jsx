@@ -22,6 +22,12 @@ function App() {
         setTaskName("");
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            handleAddTask();
+        }
+    };
+
     useEffect(() => {
         console.log(completedTask);
     }, [completedTask]);
@@ -36,6 +42,7 @@ function App() {
                 {/* Input + Add button */}
                 <div className="flex items-center gap-3 px-4">
                     <input
+                        onKeyDown={handleKeyDown}
                         onChange={(e) => setTaskName(e.target.value)}
                         value={taskName}
                         type="text"

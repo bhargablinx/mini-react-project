@@ -1,10 +1,20 @@
 import { useState } from "react";
 
-export default function ItemList({ id, title, tasks, setTasks }) {
+export default function ItemList({
+    id,
+    title,
+    tasks,
+    setTasks,
+    completedTask,
+    setCompletedTask,
+}) {
     const [isCompleted, setIsComplete] = useState(false);
 
-    const handleCheckBox = () => {
+    const handleCheckBox = (e) => {
         setIsComplete((prev) => !prev);
+        if (e.target.checked) {
+            setCompletedTask([title, ...completedTask]);
+        }
     };
 
     const handleDelete = () => {

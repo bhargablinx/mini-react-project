@@ -5,6 +5,8 @@ import { useEffect } from "react";
 function App() {
     const [tasks, setTasks] = useState([
         { id: crypto.randomUUID(), title: "Learn React" },
+        { id: crypto.randomUUID(), title: "Build projcet" },
+        { id: crypto.randomUUID(), title: "Deploy" },
     ]);
     const [taskName, setTaskName] = useState("");
     const [completedTask, setCompletedTask] = useState([]);

@@ -3,7 +3,7 @@ import ItemList from "./components/ItemList";
 
 function App() {
     const [tasks, setTasks] = useState([
-        { id: crypto.randomUUID(), title: "Demo Task", isCompleted: false },
+        { id: crypto.randomUUID(), title: "Demo Task" },
     ]);
     const [taskName, setTaskName] = useState("");
 
@@ -12,9 +12,9 @@ function App() {
         const myTaskObj = {
             id: crypto.randomUUID(),
             title: taskName,
-            isCompleted: false,
         };
         setTasks((prev) => [...prev, myTaskObj]);
+        setTaskName("");
     };
 
     return (
@@ -44,9 +44,9 @@ function App() {
                         {tasks.map((task) => {
                             return (
                                 <ItemList
+                                    key={task.id}
                                     id={task.id}
                                     title={task.title}
-                                    isCompleted={task.isCompleted}
                                 />
                             );
                         })}

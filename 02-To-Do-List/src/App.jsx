@@ -3,7 +3,7 @@ import ItemList from "./components/ItemList";
 
 function App() {
     const [tasks, setTasks] = useState([
-        { id: crypto.randomUUID(), title: "Demo Task" },
+        { id: crypto.randomUUID(), title: "Learn React" },
     ]);
     const [taskName, setTaskName] = useState("");
 
@@ -47,6 +47,8 @@ function App() {
                                     key={task.id}
                                     id={task.id}
                                     title={task.title}
+                                    tasks={tasks}
+                                    setTasks={setTasks}
                                 />
                             );
                         })}

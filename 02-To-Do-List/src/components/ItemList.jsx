@@ -1,10 +1,15 @@
 import { useState } from "react";
 
-export default function ItemList({ id, title }) {
+export default function ItemList({ id, title, tasks, setTasks }) {
     const [isCompleted, setIsComplete] = useState(false);
 
     const handleCheckBox = () => {
         setIsComplete((prev) => !prev);
+    };
+
+    const handleDelete = () => {
+        const newTasks = tasks.filter((item) => id !== item.id);
+        setTasks(newTasks);
     };
 
     return (
@@ -26,7 +31,10 @@ export default function ItemList({ id, title }) {
                     {title}
                 </label>
             </div>
-            <button className="text-[12px] text-gray-700 px-1 rounded cursor-pointer hover:text-red-500">
+            <button
+                onClick={handleDelete}
+                className="text-[12px] text-gray-700 px-1 rounded cursor-pointer hover:text-red-500"
+            >
                 <i className="fa-solid fa-trash"></i>
             </button>
         </div>

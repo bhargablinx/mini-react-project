@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../slices/authSlice";
 
 const Dashboard = () => {
     const [isConnected, setIsConnected] = useState(false);
     const [selectedServer, setSelectedServer] = useState("USA");
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const toggleConnection = () => {
         setIsConnected(!isConnected);
@@ -11,6 +16,8 @@ const Dashboard = () => {
     const handleLogout = () => {
         console.log("Logged out");
         // Redirect or clear auth state here
+        dispatch(logout());
+        navigate("/");
     };
 
     return (

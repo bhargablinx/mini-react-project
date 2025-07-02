@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+    const isLogin = useSelector((state) => state.auth.isLogin);
     return (
         <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-md">
             {/* Logo */}
@@ -23,12 +25,16 @@ const NavBar = () => {
 
             {/* Login Button */}
             <div>
-                <Link
-                    to="/login"
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
-                >
-                    Login
-                </Link>
+                {isLogin ? (
+                    ""
+                ) : (
+                    <Link
+                        to="/login"
+                        className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+                    >
+                        Login
+                    </Link>
+                )}
             </div>
         </nav>
     );

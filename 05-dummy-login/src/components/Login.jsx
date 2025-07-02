@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../slices/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     const [form, setForm] = useState({ email: "", password: "" });
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,6 +16,8 @@ const LoginPage = () => {
         e.preventDefault();
         console.log("Logging in with:", form);
         // You can add real auth here or redirect to dashboard
+        dispatch(login());
+        navigate("/dashboard");
     };
 
     return (
